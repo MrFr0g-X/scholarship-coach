@@ -1,0 +1,13 @@
+facts:
+  - id: gyf
+    claim: One of 30 fellows in the GYF Youth Fellowship
+    entity: GYF
+    date: 2022
+    number: 30
+    unit: fellows
+    used_in: [leadership]
+  - id: reach
+    claim: Students trained to date
+    entity: our initiative
+    number: 3000
+    unit: students
