@@ -1,0 +1,22 @@
+[
+  {"query": "can you look at my chevening leadership essay? it's 340 words and the limit is 300, I don't know what to cut. pasted below:\nIn 2019 I founded a coding club at Ain Shams with 12 students...", "should_trigger": true},
+  {"query": "راجعلي خطاب الحافز ده لمنحة DAAD، حاسس إنه ضعيف ومش عارف أبدأ منين", "should_trigger": true},
+  {"query": "I'm applying for the Erasmus Mundus EMJMD in Public Health, they want a 1-page motivation letter. I'm a pharmacist from Assiut with 3 years in a rural pharmacy. help me write it", "should_trigger": true},
+  {"query": "my SOP for the MS in Computer Science at TU Munich feels generic, the second paragraph is just a list of courses. how do I make it stand out?", "should_trigger": true},
+  {"query": "ابغى اتمرن على مقابلة شيفنينج، المقابلة الأسبوع الجاي في السفارة بالرياض", "should_trigger": true},
+  {"query": "turn my chevening study-in-uk essay into a personal statement for the LSE MSc Development Studies application, same story but they ask why LSE", "should_trigger": true},
+  {"query": "I honestly haven't done anything impressive, I just volunteered at my local mosque's food drive every Ramadan. what can I write for the Gates Cambridge 'commitment to improving the lives of others' question?", "should_trigger": true},
+  {"query": "check if my 4 chevening essays contradict each other, I think I wrote different years for my fellowship in two of them. files are in drafts/", "should_trigger": true},
+  {"query": "عايز أعرّف نفسي في ٣٠ ثانية لإنترفيو منحة فولبرايت، أنا مهندسة مدنية من المنصورة", "should_trigger": true},
+  {"query": "Türkiye Bursları letter of intent max 3000 characters, mine is 3400 characters, help me trim without losing my research project part", "should_trigger": true},
+  {"query": "write a cover letter for a sales associate job at Zara, I worked 2 years in retail at City Stars mall", "should_trigger": false},
+  {"query": "update my CV to the Europass format and translate the job titles to German", "should_trigger": false},
+  {"query": "my daughter has a school essay about 'my summer vacation' for 6th grade English class, can you help her outline it", "should_trigger": false},
+  {"query": "summarize this research paper on antimicrobial resistance in Upper Egypt and list its methodology limitations", "should_trigger": false},
+  {"query": "what are the eligibility requirements for the Chevening scholarship for Egyptians this year? just the list please", "should_trigger": false},
+  {"query": "translate my university transcript from Arabic to English for my visa application", "should_trigger": false},
+  {"query": "اكتبلي بوست على لينكدإن أعلن فيه إني اتقبلت في منحة شيفنينج", "should_trigger": false},
+  {"query": "help me write a recommendation letter template that professors at my faculty can reuse for any student", "should_trigger": false},
+  {"query": "proofread this blog post about my trip to London, I want to publish it on Medium tonight", "should_trigger": false},
+  {"query": "compare tuition fees and living costs between studying a master's in Germany vs Hungary", "should_trigger": false}
+]
