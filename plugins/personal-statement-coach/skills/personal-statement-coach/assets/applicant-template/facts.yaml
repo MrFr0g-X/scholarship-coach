@@ -1,0 +1,19 @@
+# Facts ledger, the single source of truth for every number, date and name in your essays.
+# check_consistency.py compares your essays against this file.
+#   id:      short unique name
+#   claim:   the fact in one sentence
+#   entity:  organisation/program the fact is about (as written in essays, e.g. GYF)
+#   date:    year (or YYYY-MM)
+#   number:  the key number, digits only (e.g. 28000)
+#   unit:    what the number counts, as written in essays (e.g. students)
+#   proof:   where it can be verified (link, certificate, letter)
+#   used_in: essays that use it
+facts:
+  - id: example-fellowship
+    claim: Selected as one of 30 fellows in the Global Youth Fellowship
+    entity: GYF
+    date: 2022
+    number: 30
+    unit: fellows
+    proof: https://example.org/announcement
+    used_in: [leadership]
