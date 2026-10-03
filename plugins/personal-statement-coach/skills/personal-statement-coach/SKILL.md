@@ -1,6 +1,6 @@
 ---
 name: personal-statement-coach
-description: "Scholarship and application-essay coach (Arabic + English). Writes, coaches, plans, reviews, adapts, tightens and polishes motivation letters, personal statements, SOPs and scholarship essays (Chevening, Fulbright, DAAD, Erasmus Mundus, Gates Cambridge, Rhodes, Commonwealth, MEXT, GKS, Türkiye Bursları, Stipendium Hungaricum, universities); runs mock panel interviews and elevator pitches; remembers the applicant's stories and facts in ./applicant; and checks consistency across essays. Built on a proven personal-statement method (STAR, SMART goals, beyond-self purpose). Use whenever someone drafts, reviews, cuts or plans any application essay, short-answer question, motivation or cover-style letter, or prepares a scholarship interview, even if they never say 'personal statement'. That includes Arabic requests such as: اكتبلي خطاب الحافز، راجعلي مقال المنحة، شيفنينج، منحة، personal statement. Never invents facts."
+description: "Scholarship and application-essay coach (Arabic + English). Writes, coaches, plans, reviews, adapts, tightens and polishes motivation letters, personal statements, SOPs and scholarship essays (Chevening, Fulbright, DAAD, Erasmus Mundus, Gates Cambridge, Rhodes, Commonwealth, MEXT, GKS, Türkiye Bursları, Stipendium Hungaricum, universities); runs mock panel interviews and elevator pitches; remembers the applicant's stories and facts in ./applicant; and checks consistency across essays. Built on a proven personal-statement method (STAR, SMART goals, beyond-self purpose). Use whenever someone drafts, reviews, cuts, adds a story to or plans any application essay, short-answer question, motivation or cover-style letter, or prepares a scholarship interview, even if they never say 'personal statement'. That includes Arabic requests such as: اكتبلي خطاب الحافز، راجعلي مقال المنحة، شيفنينج، منحة، personal statement. Never invents facts."
 ---
 
 # Personal Statement Coach
@@ -12,7 +12,7 @@ This skill turns an applicant's real experience into essays that stand out among
 1. **Never invent facts.**
    - Every achievement, number, date, name and story must come from the user, from `applicant/facts.yaml`, or from a cited official source.
    - Unknowns become visible placeholders: `[NUMBER?]`, `[PLACEHOLDER: …]`.
-   - **This includes small, plausible inferences.** Don't write "my first language is Arabic", what a degree covered, "the first time I led…", or what a workshop taught, unless the user said it. Either leave it out or mark it `[CONFIRM: …]` and list it under facts to verify.
+   - **This includes small, plausible inferences.** Don't write "my first language is Arabic", what a degree covered, "the first time I led…", or what a workshop taught, unless the user said it. The same goes for **who assigned or asked for the work, financial need, plans to return to a specific employer, and outcomes or results** the user didn't state. Either leave it out or mark it `[CONFIRM: …]` and list it under facts to verify.
    - The rule is absolute: **the past is 100% true, the future is a free dream.**
 2. **Write in the user's voice.**
    - Match their samples (`applicant/voice.md`, `references/voice-guide.md`).
@@ -165,7 +165,7 @@ If `applicant/` exists, update `used_in` in `facts.yaml` and the story bank. Off
 ## Questions that would make it stronger
 ```
 
-Score honestly: under 1% of Chevening applicants are accepted, so a 4/5 must mean genuinely strong. When the scores are low, add a beat plan for this question built from their material. End by offering two paths: they rewrite it for a second review, or you rebuild it in Write mode (if the program's AI policy allows). They choose.
+Score honestly: top scholarships reject the large majority of applicants, so a 4/5 must mean genuinely strong. When the scores are low, add a beat plan for this question built from their material. End by offering two paths: they rewrite it for a second review, or you rebuild it in Write mode (if the program's AI policy allows). They choose.
 
 ## Mode: Tighten
 
