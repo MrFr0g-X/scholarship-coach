@@ -24,6 +24,12 @@ def main():
         else:
             shutil.copy(os.path.join(TEMPLATE, name), dst)
             created.append(name)
+    # applicant/.gitignore with "*" keeps the folder out of any git repo, no setup needed
+    own = os.path.join(target, ".gitignore")
+    if not os.path.exists(own):
+        with open(own, "w", encoding="utf-8") as f:
+            f.write("*\n")
+        created.append(".gitignore")
     parent = os.path.dirname(target)
     gi = os.path.join(parent, ".gitignore")
     entry = os.path.basename(target) + "/"

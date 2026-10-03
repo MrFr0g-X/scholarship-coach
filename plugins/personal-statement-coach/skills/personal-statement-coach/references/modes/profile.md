@@ -3,7 +3,7 @@
 Build the applicant's memory **once**, so every later essay, review and interview reuses it. Everything stays local in `./applicant/`.
 
 ## Steps
-1. **Create the folder:** `python <skill-dir>/scripts/profile_init.py` creates `./applicant/` (profile, story bank, facts ledger, voice, tracker, `drafts/`) and git-ignores it. It never overwrites existing files.
+1. **Create the folder:** `python <skill-dir>/scripts/profile_init.py` creates `./applicant/` (profile, story bank, facts ledger, voice, tracker, `drafts/`) with its own `.gitignore`, so it never gets committed. It never overwrites existing files.
 2. **Import what already exists.** Ask for a CV, LinkedIn PDF export or old essays.
    - Extract text: `python <skill-dir>/scripts/read_doc.py <file> --out applicant/cv.txt` (handles .docx, .pdf, .txt).
    - From it, fill `profile.md` basics and draft `facts.yaml` entries: every number, date, title, organisation and award, with `proof: CV` and a `TODO verify` note when unclear.
