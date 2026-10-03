@@ -30,8 +30,6 @@ It is built on a proven personal statement method and on the official guidance o
 
 <a href="assets/showreel.mp4"><img src="assets/social-preview.png" alt="Watch the showreel" width="80%"></a>
 
-<sub>▶ Click to watch. 47 seconds, with sound. Made in code: a GSAP timeline rendered frame by frame. Source in <a href="media/showreel">media/showreel</a>.</sub>
-
 </div>
 
 ## Install
