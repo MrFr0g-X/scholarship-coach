@@ -76,6 +76,18 @@ def test_cli_json():
     assert data["stats"]["words"] == 168
 
 
+def test_commas_are_not_dashes():
+    text = "In 2021, I trained 40 nurses, wrote 3 guides, and ran 9 workshops, all for my community."
+    assert not any("dashes" in m for m in messages(check_draft.analyse(text), "generic"))
+    dashed = "One \u2014 two \u2014 three \u2014 four."
+    assert any("dashes" in m for m in messages(check_draft.analyse(dashed), "generic"))
+
+
+def test_most_importantly_ending_counts_as_beyond_self():
+    text = "I trained 40 nurses in 2021 and wrote 3 guides.\n\nMost importantly, fewer mothers will leave the ward confused."
+    assert not any("Final paragraph" in m for m in messages(check_draft.analyse(text), "content"))
+
+
 # ---------- check_consistency ----------
 def _app():
     essays = {n: read(f"app/{n}.txt") for n in ("leadership", "networking")}
@@ -125,7 +137,7 @@ def test_profile_init_creates_and_never_overwrites(tmp_path):
     target = tmp_path / "applicant"
     script = os.path.join(SCRIPTS, "profile_init.py")
     subprocess.run([sys.executable, script, str(target)], check=True, capture_output=True)
-    for name in ("profile.md", "story-bank.md", "facts.yaml", "voice.md", "tracker.md"):
+    for name in ("profile.md", "story-bank.md", "facts.yaml", "voice.md", "tracker.md", ".gitignore"):
         assert (target / name).exists()
     (target / "voice.md").write_text("mine", encoding="utf-8")
     subprocess.run([sys.executable, script, str(target)], check=True, capture_output=True)

@@ -144,7 +144,7 @@ def analyse(text, limit=None, unit="words"):
     conn = Counter(c for c in CONNECTORS for _ in re.finditer(r"\b" + c + r"\b", low))
     if sum(conn.values()) >= 3:
         add("generic", f"Connector chain {dict(conn)}, vary or cut")
-    dashes = text.count(", ") + text.count(" - ")
+    dashes = text.count("\u2014") + text.count("\u2013") + text.count(" - ")
     if dashes >= 3:
         add("generic", f"{dashes} dashes, use plainer punctuation")
     starters = Counter(" ".join(words(s)[:2]).lower() for s in sents if len(words(s)) >= 2)
@@ -157,7 +157,7 @@ def analyse(text, limit=None, unit="words"):
     stats["beyond_self_words"] = bs
     if bs < 3:
         add("content", "Few beyond-self words, purpose may be self-centred (Part 1 item 1)")
-    if paras and not re.search(BEYOND_SELF, paras[-1].lower()):
+    if paras and not re.search(BEYOND_SELF + r"|most importantly", paras[-1].lower()):
         add("content", "Final paragraph doesn't land on others/community ('Most importantly…' move)")
     if not re.search(r"\b(will|plan|goal|within|by 20\d\d|years?)\b", low):
         add("content", "No future-plan language found (Must-include M3)")

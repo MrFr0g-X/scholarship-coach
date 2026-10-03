@@ -37,7 +37,7 @@ GENERIC = [
 
 CONNECTORS = ["furthermore", "moreover", "additionally", "in addition"]
 
-BEYOND_SELF = r"\b(community|communities|society|others|people|country|region|youth|young|women|children|students|marginali[sz]ed|sdg|sustainab\w*|empower\w*)\b"
+BEYOND_SELF = r"\b(community|communities|society|others|people|country|region|youth|young|women|men|children|students|patients|families|mothers|fathers|citizens|neighbou?rs|colleagues|volunteers|marginali[sz]ed|sdg|sustainab\w*|empower\w*)\b"
 
 STOPWORDS = set("""a an the and or but if of to in on at by for with from as is are was were be been being
 i me my we our you your he she they them their it its this that these those who which what when where why how
