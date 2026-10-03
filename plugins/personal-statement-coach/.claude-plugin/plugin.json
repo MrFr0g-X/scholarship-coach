@@ -1,0 +1,13 @@
+{
+  "name": "personal-statement-coach",
+  "version": "1.0.0",
+  "description": "Write, coach, review, adapt and interview-prep motivation letters, personal statements and scholarship essays (Chevening, Fulbright, DAAD, Erasmus Mundus, MEXT, Stipendium Hungaricum and more). Remembers your stories and facts, catches cross-essay contradictions, runs mock panel interviews, and works in Arabic and English.",
+  "author": {
+    "name": "MrFr0g-X",
+    "url": "https://github.com/MrFr0g-X"
+  },
+  "homepage": "https://github.com/MrFr0g-X/scholarship-coach",
+  "repository": "https://github.com/MrFr0g-X/scholarship-coach",
+  "license": "MIT",
+  "keywords": ["scholarship", "personal-statement", "motivation-letter", "chevening", "fulbright", "daad", "erasmus-mundus", "sop", "arabic", "essay"]
+}

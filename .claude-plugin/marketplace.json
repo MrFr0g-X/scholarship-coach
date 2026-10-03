@@ -1,0 +1,18 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "scholarship-coach",
+  "description": "Scholarship and personal-statement tools for Claude Code, Arabic + English.",
+  "owner": {
+    "name": "MrFr0g-X",
+    "url": "https://github.com/MrFr0g-X"
+  },
+  "plugins": [
+    {
+      "name": "personal-statement-coach",
+      "description": "Write, coach, review, adapt and interview-prep scholarship essays and motivation letters, in Arabic and English.",
+      "author": { "name": "MrFr0g-X" },
+      "category": "productivity",
+      "source": "./plugins/personal-statement-coach"
+    }
+  ]
+}

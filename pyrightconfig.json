@@ -1,0 +1,4 @@
+{
+  "extraPaths": ["plugins/personal-statement-coach/skills/personal-statement-coach/scripts"],
+  "reportMissingModuleSource": "none"
+}
