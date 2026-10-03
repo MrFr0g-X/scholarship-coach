@@ -1,0 +1,6 @@
+node_modules/
+stills/
+gifframes/
+*.mp4
+*.wav
+*.gif

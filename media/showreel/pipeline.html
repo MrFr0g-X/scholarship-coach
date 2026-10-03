@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Scholarship Coach · pipeline</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=block" rel="stylesheet">
+<style>
+  :root{--paper:#F4F1EA;--ink:#121212;--muted:#8A857B;--red:#E5484D;--hl:#FFE066;--blue:#2F5BFF;--green:#16A34A;--card:#fff}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:1920px;height:1080px;overflow:hidden;background:var(--paper);font-family:Inter,sans-serif;color:var(--ink)}
+  #vignette{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.09) 100%);pointer-events:none}
+  .hud{position:absolute;font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+  .corner{position:absolute;width:26px;height:26px;border:0 solid var(--muted);opacity:.6}
+  .c1{top:28px;left:28px;border-width:2px 0 0 2px}.c2{top:28px;right:28px;border-width:2px 2px 0 0}
+  .c3{bottom:28px;left:28px;border-width:0 0 2px 2px}.c4{bottom:28px;right:28px;border-width:0 2px 2px 0}
+  .dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--red);margin-right:10px;vertical-align:1px}
+  #title{position:absolute;left:120px;top:120px;font-size:84px;font-weight:800;letter-spacing:-.04em}
+  #title em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;letter-spacing:-.01em}
+  #sub{position:absolute;left:124px;top:222px;font-size:28px;color:#5d5a53}
+  #wires{position:absolute;inset:0}
+  .node{position:absolute;width:236px;height:244px;background:var(--card);border-radius:22px;box-shadow:0 22px 48px rgba(0,0,0,.09),0 1px 0 rgba(0,0,0,.04);
+        padding:24px 22px;opacity:0}
+  .node .num{font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:.14em;color:var(--muted)}
+  .node svg{display:block;width:56px;height:56px;margin:16px 0 18px}
+  .node b{display:block;font-size:28px;font-weight:700;letter-spacing:-.01em;line-height:1.15}
+  .node code{display:block;font-family:'JetBrains Mono',monospace;font-size:17px;color:var(--blue);margin-top:8px}
+  .node.on{box-shadow:0 0 0 3px var(--ink),0 26px 56px rgba(0,0,0,.14)}
+  #prof{position:absolute;left:760px;top:330px;width:400px;height:96px;background:var(--ink);color:#fff;border-radius:18px;display:flex;align-items:center;gap:18px;padding:0 28px;opacity:0}
+  #prof svg{width:40px;height:40px}
+  #prof b{font-size:24px} #prof span{display:block;font-family:'JetBrains Mono',monospace;font-size:14px;color:#b9b9b9;letter-spacing:.06em;margin-top:4px}
+  #token{position:absolute;left:0;top:0;width:58px;height:72px;margin:-36px 0 0 -29px;background:#fff;border:3px solid var(--ink);border-radius:8px;opacity:0;z-index:5;
+         box-shadow:0 10px 24px rgba(0,0,0,.18)}
+  #token i{position:absolute;left:10px;right:10px;height:4px;background:#d8d4ca;border-radius:2px}
+  .chip{position:absolute;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:18px;padding:10px 16px;border-radius:10px;color:#fff;opacity:0;white-space:nowrap;z-index:6}
+  #tag{position:absolute;left:0;right:0;bottom:120px;text-align:center;font-family:'Instrument Serif',serif;font-style:italic;font-size:54px;color:#3d3a34;opacity:0}
+</style>
+</head>
+<body>
+<svg id="wires" viewBox="0 0 1920 1080"></svg>
+<div id="title">How it <em>works.</em></div>
+<div id="sub">Seven steps. One memory. Every program's rules.</div>
+<div id="prof">
+  <svg viewBox="0 0 40 40" fill="none" stroke="#FFE066" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h18l6 6v22H8z"/><path d="M26 6v6h6"/><path d="M13 19h14M13 25h14M13 31h8"/></svg>
+  <div><b>Program profile</b><span>prompts · limits · AI rules</span></div>
+</div>
+<div id="nodes"></div>
+<div id="token"><i style="top:14px"></i><i style="top:26px"></i><i style="top:38px;right:20px"></i><i style="top:50px"></i></div>
+<div class="chip" id="chScore" style="background:var(--ink)">13 → 40 /50</div>
+<div class="chip" id="chConflict" style="background:var(--red)">GYF 2020 ≠ 2022</div>
+<div class="chip" id="chFixed" style="background:var(--green)">fixed ✓</div>
+<div class="chip" id="chQ" style="background:var(--blue)">"How did you count them?"</div>
+<div id="tag">Your story. Told well. Never invented.</div>
+<div id="vignette"></div>
+<i class="corner c1"></i><i class="corner c2"></i><i class="corner c3"></i><i class="corner c4"></i>
+<div class="hud" style="top:44px;left:56px"><span class="dot"></span>Scholarship Coach · Pipeline</div>
+<div class="hud" style="top:44px;right:56px">Claude Code Plugin · v1.0</div>
+<div class="hud" style="bottom:44px;left:56px" id="stepLbl">00 / Start</div>
+<div class="hud" style="bottom:44px;right:56px">TC <span id="tc">00:00:00</span></div>
+
+<script src="node_modules/gsap/dist/gsap.min.js"></script>
+<script>
+const $=s=>document.querySelector(s), FPS=60;
+const IC = {
+  user:'<circle cx="23" cy="15" r="8"/><path d="M8 40c2-8 8-12 15-12s13 4 15 12"/>',
+  db:'<ellipse cx="23" cy="10" rx="14" ry="5"/><path d="M9 10v26c0 3 6 5 14 5s14-2 14-5V10"/><path d="M9 23c0 3 6 5 14 5s14-2 14-5"/>',
+  pen:'<path d="M30 6l10 10L16 40H6V30z"/><path d="M26 10l10 10"/>',
+  check:'<rect x="6" y="6" width="34" height="34" rx="6"/><path d="M14 23l6 6 12-13"/>',
+  cut:'<circle cx="12" cy="34" r="5"/><circle cx="34" cy="34" r="5"/><path d="M15 30L36 6M31 30L10 6"/>',
+  link:'<rect x="4" y="12" width="16" height="22" rx="3"/><rect x="26" y="12" width="16" height="22" rx="3"/><path d="M20 23h6"/>',
+  mic:'<rect x="16" y="4" width="14" height="24" rx="7"/><path d="M9 22c0 8 6 13 14 13s14-5 14-13M23 35v7"/>'
+};
+const steps=[
+  ['01','user','Profile','/ps-start'],
+  ['02','db','Memory','applicant/'],
+  ['03','pen','Plan + Write','/ps-write'],
+  ['04','check','Review','check_draft.py'],
+  ['05','cut','Tighten + Polish','tighten · polish'],
+  ['06','link','Consistency','/ps-check'],
+  ['07','mic','Interview','/ps-interview'],
+];
+const W=236, GAP=24, X0=(1920-(7*W+6*GAP))/2, Y=560;
+steps.forEach(([n,ic,t,c],i)=>{
+  const x=X0+i*(W+GAP);
+  $('#nodes').insertAdjacentHTML('beforeend',`<div class="node" id="n${i}" style="left:${x}px;top:${Y}px"><div class="num">${n}</div>
+  <svg viewBox="0 0 46 46" fill="none" stroke="#121212" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">${IC[ic]}</svg><b>${t}</b><code>${c}</code></div>`);
+});
+const cx=i=>X0+i*(W+GAP)+W/2, cy=Y+122;
+// main wire
+let d='', segs=[];
+for(let i=0;i<steps.length-1;i++){ segs.push(`M ${cx(i)+W/2} ${cy} L ${cx(i+1)-W/2} ${cy}`); }
+const svg=$('#wires');
+segs.forEach((s,i)=>svg.insertAdjacentHTML('beforeend',`<path id="w${i}" d="${s}" stroke="#121212" stroke-width="4" stroke-linecap="round" fill="none"/>`));
+// profile feeds (dashed) into Write(2), Review(3), Interview(6)
+[2,3,6].forEach((k,j)=>svg.insertAdjacentHTML('beforeend',`<path id="f${j}" d="M 960 426 C 960 500, ${cx(k)} 470, ${cx(k)} ${Y}" stroke="#8A857B" stroke-width="3" stroke-dasharray="10 10" fill="none"/>`));
+
+const tl=gsap.timeline({paused:true});
+const labels=[]; const lab=(t,s)=>labels.push([t,s]);
+function len(el){ return el.getTotalLength(); }
+document.querySelectorAll('#wires path').forEach(p=>{ if(!p.id.startsWith('f')) gsap.set(p,{strokeDasharray:len(p),strokeDashoffset:len(p)}); });
+
+lab(0,'00 / Start');
+tl.fromTo('#title',{y:30,opacity:0},{y:0,opacity:1,duration:.6,ease:'power3.out'},.1);
+tl.fromTo('#sub',{y:20,opacity:0},{y:0,opacity:1,duration:.5,ease:'power2.out'},.35);
+// nodes + wires sequential
+steps.forEach((s,i)=>{
+  const t=.8+i*.32;
+  tl.fromTo(`#n${i}`,{opacity:0,y:40,scale:.92},{opacity:1,y:0,scale:1,duration:.45,ease:'back.out(1.8)'},t);
+  if(i<steps.length-1) tl.to(`#w${i}`,{strokeDashoffset:0,duration:.3,ease:'power2.inOut'},t+.25);
+});
+tl.fromTo('#prof',{opacity:0,y:-20},{opacity:1,y:0,duration:.5,ease:'power3.out'},3.1);
+['#f0','#f1','#f2'].forEach((f,j)=>tl.fromTo(f,{opacity:0},{opacity:1,duration:.4},3.4+j*.12));
+
+// token journey
+const P={i:0};
+function placeToken(){ const f=P.i, a=Math.floor(f), b=Math.min(a+1,steps.length-1), u=f-a;
+  const x=cx(a)+(cx(b)-cx(a))*u; $('#token').style.left=x+'px'; $('#token').style.top=(Y-60)+'px'; }
+tl.set('#token',{opacity:1},4.0);
+tl.fromTo('#token',{scale:0},{scale:1,duration:.35,ease:'back.out(2)'},4.0);
+const stopAt=[[0,4.0,'01 / Profile'],[1,4.9,'02 / Memory'],[2,5.8,'03 / Plan + Write'],[3,6.7,'04 / Review'],[4,8.0,'05 / Tighten + Polish'],[5,8.9,'06 / Consistency'],[6,10.4,'07 / Interview']];
+stopAt.forEach(([k,t,l],j)=>{
+  if(j>0) tl.to(P,{i:k,duration:.55,ease:'power2.inOut',onUpdate:placeToken},t-.55);
+  tl.call(()=>{},null,t); lab(t,l);
+  tl.to(`#n${k}`,{className:'node on',duration:.01},t);
+  if(j>0) tl.to(`#n${stopAt[j-1][0]}`,{className:'node',duration:.01},t);
+});
+const chipAt=(id,k,t,dur=1.1)=>{ tl.set(id,{left:cx(k),top:Y-150,xPercent:-50},t);
+  tl.fromTo(id,{opacity:0,y:14,scale:.9},{opacity:1,y:0,scale:1,duration:.3,ease:'back.out(2.5)'},t); tl.to(id,{opacity:0,y:-10,duration:.25},t+dur); };
+chipAt('#chScore',3,6.85,1.0);
+chipAt('#chConflict',5,9.05,.7);
+chipAt('#chFixed',5,9.85,.45);
+chipAt('#chQ',6,10.55,1.4);
+// finale: all nodes lit, tagline
+tl.to('.node',{className:'node on',duration:.01,stagger:.06},12.2);
+tl.to('#token',{opacity:0,scale:.6,duration:.3},12.2);
+tl.fromTo('#tag',{opacity:0,y:20},{opacity:1,y:0,duration:.6,ease:'power2.out'},12.5);
+lab(12.2,'08 / Ready');
+// fade out for a clean loop
+tl.to(['#title','#sub','#prof','.node','#wires','#tag'],{opacity:0,duration:.5,ease:'power2.in'},14.6);
+tl.to({}, {duration:.01}, 15.2);
+
+const DUR=tl.duration();
+function hud(t){ const f=Math.floor(t*FPS)%FPS,s=Math.floor(t)%60,m=Math.floor(t/60);
+  $('#tc').textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}:${String(f).padStart(2,'0')}`;
+  let l=labels[0][1]; for(const [a,x] of labels){ if(t>=a) l=x; } $('#stepLbl').textContent=l; }
+window.__DUR=DUR;
+window.__seek=t=>{ tl.seek(t,false); placeToken(); hud(t); };
+window.__ready=document.fonts.ready.then(()=>{ window.__seek(0); return true; });
+if(!navigator.webdriver){ tl.eventCallback('onUpdate',()=>{placeToken();hud(tl.time());}); document.fonts.ready.then(()=>tl.repeat(-1).play()); }
+</script>
+</body>
+</html>

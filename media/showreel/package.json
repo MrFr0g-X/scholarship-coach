@@ -1,0 +1,6 @@
+{
+  "name": "scholarship-coach-showreel",
+  "private": true,
+  "description": "Source for the README showreel. GSAP timeline rendered frame by frame with Playwright and ffmpeg.",
+  "dependencies": { "gsap": "^3.13.0" }
+}
